@@ -16,8 +16,9 @@ import { ContentTypeImageKey } from 'src/utils/hooks/codecs/Image';
 import MessageMedia from './MessageMedia';
 import { ContentTypeVideoKey } from 'src/utils/hooks/codecs/Video';
 import { useMessageStore } from 'src/store/message';
-import { NewPinstaAttachment } from 'src/utils/custom-types';
+import { NewLenstokAttachment } from 'src/utils/custom-types';
 import  Loader  from 'src/components/UI/Loader';
+import getAvatar from '@/lib/getAvatar';
 
 const isOnSameDay = (d1?: Date, d2?: Date): boolean => {
   return dayjs(d1).format('YYYYMMDD') === dayjs(d2).format('YYYYMMDD');
@@ -43,14 +44,14 @@ const MessageTile: FC<MessageTileProps> = ({ message, profile, currentProfile })
         >
             <div
                 className={clsx( 'flex',
-                    message.contentType.typeId == ContentTypeVideoKey.typeId ? 'w-full max-w-[60%]' : 'max-w-[60%]'
+                    message.contentType.typeId == ContentTypeVideoKey.typeId ? 'w-full h-full max-w-[60%]' : 'max-w-[60%]'
                 )}
             >
                 {address !== message.senderAddress && (
                     <img
                         // @ts-ignore
-                        src={getProfilePicture(profile)}
-                        className="mr-2 h-10 w-10 rounded-full border bg-gray-200 border-gray-700"
+                        src={getAvatar(profile)}
+                        className="mr-2 h-10 w-10 rounded-full border  border-gray-700"
                         alt={formatHandle(profile?.handle)}
                     />
                 )}
@@ -69,7 +70,7 @@ const MessageTile: FC<MessageTileProps> = ({ message, profile, currentProfile })
                             : 
                             <span
                                 className={clsx(
-                                address === message.senderAddress && 'text-white',
+                                address === message.senderAddress && 'text-black',
                                 'text-md linkify-message block break-words'
                                 )}
                             >
@@ -88,15 +89,15 @@ const MessageTile: FC<MessageTileProps> = ({ message, profile, currentProfile })
 };
 
 interface AttachmentMessageTileProps {
-    attachment: NewPinstaAttachment;
+    attachment: NewLenstokAttachment;
     profile?: Profile;
     currentProfile?: Profile | null;
 }
 
 const AttachmentMessageTile: FC<AttachmentMessageTileProps> = ({ attachment, profile, currentProfile }) => {
     return (
-        <div className='mr-4 items-end mx-auto mb-4 flex flex-col'>
-            <div className='flex max-w-[60%] relative'>
+        <div className='mr-4 border-black border-2 items-end mx-auto mb-4 flex flex-col'>
+            <div className='flex max-w-[60%] border-black border-2 relative'>
                 <div className='w-full rounded-2xl p-0'>
                     <img
                         src={attachment.item}
@@ -104,7 +105,7 @@ const AttachmentMessageTile: FC<AttachmentMessageTileProps> = ({ attachment, pro
                         className='w-full rounded-2xl cursor-pointer'
                     />
                 </div>
-                <div className='absolute bg-black/50 flex items-center justify-center w-full h-full rounded-2xl'>
+                <div className='absolute  flex items-center justify-center w-full h-full rounded-2xl'>
                     <Loader  />
                 </div>
             </div>
@@ -133,7 +134,7 @@ const DateDivider: FC<{ date?: Date }> = ({ date }) => (
 );
 
 const MissingXmtpAuth: FC = () => (
-    <Card as="aside" className="mb-2 mr-4 space-y-2.5 border-gray-400  !bg-opacity-20 p-5">
+    <Card as="aside" className="mb-2 mr-4 space-y-2.5 border-black border-2  !bg-opacity-20 p-5">
         <div className="flex items-center space-x-2 font-bold">
             <HiOutlineEmojiSad className="h-5 w-5" />
         <p>
@@ -181,8 +182,8 @@ const MessagesList: FC<MessageListProps> = ({
     const isUploading = useMessageStore((state) => state.isUploading);
     const attachment = useMessageStore((state) => state.attachment);
     return (
-        <div className="flex h-[75%] flex-grow">
-            <div className="relative flex h-full w-full pl-4">
+        <div className="flex h-[75%]  text-sm font-semibold flex-grow">
+            <div className="relative h-full w-full pl-4">
                 <div id="scrollableMessageListDiv" className="flex h-full w-full flex-col-reverse overflow-y-auto">
                 {missingXmtpAuth && <MissingXmtpAuth />}
                     <InfiniteScroll
@@ -206,7 +207,7 @@ const MessagesList: FC<MessageListProps> = ({
                             const dateHasChanged = lastMessageDate ? !isOnSameDay(lastMessageDate, msg.sent) : false;
                             const messageDiv = (
                                 <div className='message' key={`${msg.id}_${index}`}>
-                                    <MessageTile currentProfile={currentProfile} profile={profile} message={msg} />
+                                    <MessageTile currentProfile={currentProfile}  profile={profile} message={msg} />
                                     {dateHasChanged ? <DateDivider date={lastMessageDate} /> : null}
                                 </div>
                             );

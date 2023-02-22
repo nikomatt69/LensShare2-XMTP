@@ -9,9 +9,9 @@ import type { FC } from 'react';
 import {useAppStore} from 'src/store/app';
 import formatHandle from 'src/utils/functions/formatHandle';
 import formatTime from 'src/utils/functions/formatTime';
-import getProfilePicture from 'src/utils/functions/getProfilePicture';
 import { ContentTypeImageKey } from 'src/utils/hooks/codecs/Image';
 import { ContentTypeVideoKey } from 'src/utils/hooks/codecs/Video';
+import getAvatar from '@/lib/getAvatar';
 
 dayjs.extend(relativeTime);
 
@@ -34,24 +34,24 @@ const Preview: FC<Props> = ({ profile, message, conversationKey, isSelected }) =
     return (
         <div
             className={clsx(
-                'cursor-pointer py-3 hover:bg-gray-100 hover:bg-gray-800',
+                'cursor-pointer rounded-xl text-bold hover:bg-blue-100 hover:bg-blue-100',
                 isSelected && 'bg-gray-50 bg-gray-800'
             )}
             onClick={() => onConversationSelected(profile.id)}
         >
-            <div className="flex justify-between space-x-3 px-5">
+            <div className="flex justify-between text-semibold py-3 border-grey-800 border-2 rounded-xl space-x-3 px-5">
                 <img
-                    src={getProfilePicture(profile)}
+                    src={getAvatar(profile)}
                     loading="lazy"
-                    className="h-10 w-10 rounded-full border bg-gray-200 border-gray-700"
+                    className="h-10 w-10 rounded-full border bg-gray-200 border-gray-500"
                     height={40}
                     width={40}
                     alt={formatHandle(profile?.handle)}
                 />
-                <div className="w-full">
-                    <div className="flex w-full justify-between space-x-1">
+                <div className="w-full font-bold">
+                    <div className="flex w-full text-semibold justify-between space-x-1">
                         <div className="flex max-w-sm items-center">
-                            <div className="line-clamp-1 text-md">{profile?.name ?? formatHandle(profile.handle)}</div>
+                            <div className="line-clamp-1 text-semibold text-md">{profile?.name ?? formatHandle(profile.handle)}</div>
                         </div>
                         {message.sent && (
                             <span className="lt-text-gray-500 min-w-fit pt-0.5 text-xs" title={formatTime(message.sent)}>

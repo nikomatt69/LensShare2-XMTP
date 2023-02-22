@@ -90,7 +90,7 @@ export const useDisconnectXmtp = () => {
             // eslint-disable-next-line
             setClient(undefined);
         }
-        localStorage.removeItem('pinsta.message.store');
+        localStorage.removeItem('lensshare.message.store');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [signer, client]);
 

@@ -1,4 +1,4 @@
-import { IS_MAINNET } from '../constants'
+import { IS_MAINNET } from 'src/constants'
 
 const getLensHandle = (handle: string) => {
     const name = handle.replace('.lens', '').replace('.test', '')

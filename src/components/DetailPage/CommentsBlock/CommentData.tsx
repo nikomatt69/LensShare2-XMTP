@@ -5,8 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { FC } from "react";
 import getAvatar from "@/lib/getAvatar";
-import LitJsSdk from "@lit-protocol/sdk-browser";
-import lit from "@/lib/lit";
+
 
 interface Props {
   comment: Publication;
@@ -45,17 +44,6 @@ const CommentData: FC<Props> = ({ comment, publication }) => {
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(body),
           });
-          const jsonLit = await response.json();
-          const blob = LitJsSdk.base64StringToBlob(jsonLit.litComment);
-          const message = await lit.decryptString(
-            blob,
-            jsonLit.litKkey,
-            publication.profile.ownedBy,
-            currentProfile?.ownedBy
-          );
-          const decrypted = message.decryptedFile;
-          console.log("DECRYPTED", decrypted);
-          return message.decryptedFile ? decrypted : "Encrypted Comment";
         }
       } catch (err) {
         console.log(err);

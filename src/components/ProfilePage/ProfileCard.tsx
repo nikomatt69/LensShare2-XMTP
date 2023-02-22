@@ -6,6 +6,7 @@ import { Profile} from '@/types/lens';
 import { sanitizeIpfsUrl } from '@/utils/sanitizeIpfsUrl';
 import FollowButton from  "@/components/Buttons/FollowButton";
 import { useAppStore } from "src/store/app";
+import MesssageIcon from 'src/components/Messages/MessageIcon';
 
 import ProfileVideos from "@/components/ProfilePage/ProfileVideos";
 import UnfollowButton from '../Buttons/UnfollowButton';
@@ -17,6 +18,10 @@ import Following from './Following';
 import Link from 'next/link';
 import { RiLiveLine } from 'react-icons/ri';
 import { GoVerified } from 'react-icons/go'
+import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/20/solid';
+import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+
+
 
 interface Props {
     profile: Profile
@@ -30,13 +35,13 @@ interface Props {
         const [showFollowingModal, setShowFollowingModal] = useState(false);
 
         const itsNotMe = profile?.id !== currentProfile?.id
-        const videos = showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
-        const liked = !showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
+        const videos = showUserVideos ? 'flex text-center border-2 border-black' : 'border-2 border-black text-black';
+        const liked = !showUserVideos ? 'flex text-center border-2 border-black' : 'border-2 border-black text-black';
 
         return (
             <div className="flex justify-center mx-4">
                 <div className="w-full max-w-[1150px]">
-                        <div className="flex border-4 border-grey rounded-3xl gap-3">
+                        <div className="flex  rounded-3xl gap-3">
                             <div>
                             <Image
                             src={getAvatar(profile)}
@@ -66,15 +71,21 @@ interface Props {
                             <button className='active:bg-violet-600 py-1 px-3 drop-shadow-xl rounded-full text-sm mt-2 border-2 border-black  hover:text-[#000000] hover:bg-[#57B8FF] transition cursor-pointer bg-[#57B8FF] text-[#000000] font-semibold'>
                                 <Link href='/createstream'>GO LIVE</Link>
                             </button>
+                            
                            )
                            } 
                     </div>
     
                             </div>
-                        </div>
+                        </div> 
+
+                        <Link href={`/settings/index/${profile?.id}`}>
+                            <Cog6ToothIcon  className='h-6 w-6 text-black' />
+                        </Link>
+
     
                         <div className="flex gap-4 mt-3 cursor-pointer" onClick={() => { setShowFollowingModal(!showFollowingModal) }}>
-                            <div className="flex items-center border-4 border-grey margin-1 rounded-3xl gap-2">
+                            <div className="flex items-center  margin-1 rounded-3xl gap-2">
                                 <span className="font-bold text-md"> {profile?.stats.totalFollowing} </span>
                                 <span>Following</span>
                                 <Modal
@@ -85,7 +96,7 @@ interface Props {
                                     <Following profile={profile as Profile} />
                                 </Modal>
                             </div>
-                        <div className="flex items-center border-4 border-grey margin-1 rounded-3xl gap-2 cursor-pointer" onClick={() => { setShowFollowersModal(!showFollowersModal) }}>
+                        <div className="flex items-center  margin-1 rounded-3xl gap-2 cursor-pointer" onClick={() => { setShowFollowersModal(!showFollowersModal) }}>
                             <span className="font-bold text-md">{profile?.stats.totalFollowers}</span>
                             <span>Followers</span>
                             <Modal
@@ -97,11 +108,11 @@ interface Props {
                             </Modal>
                         </div>
                         </div>
-                        <div className='flex gap-10 p-5 border-b mb-5 mt-5  border-gray-200 bg-white w-full'>
-                        <span className={`text-md font-semibold cursor-pointer ${videos} mt-2`} onClick={() => setShowUserVideos(true)}>
+                        <div className='flex-1 text-center gap-10 p-5 border-4 mb-5 mt-5 border-2 rounded-full border-black bg-blue-100 w-full'>
+                        <span className={`text-md  bg-blue-200  rounded-full items-center  py-3 px-3  font-semibold cursor-pointer ${videos} mt-2`} onClick={() => setShowUserVideos(true)}>
                         Videos
                         </span>
-                        <span className={`text-md font-semibold cursor-pointer ${liked} mt-2`} onClick={() => setShowUserVideos(false)}>
+                        <span className={`text-md bg-blue-200  rounded-full  py-3 px-3 font-semibold cursor-pointer ${liked} mt-2`} onClick={() => setShowUserVideos(false)}>
                         Collected
                         </span>
                         </div>

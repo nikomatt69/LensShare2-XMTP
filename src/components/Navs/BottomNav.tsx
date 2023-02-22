@@ -1,10 +1,11 @@
 import Link from 'next/link'
-import { VideoCameraIcon, ChatBubbleBottomCenterIcon } from "@heroicons/react/20/solid";
+import { VideoCameraIcon, ChatBubbleOvalLeftIcon } from "@heroicons/react/20/solid";
 import { useAppStore } from "src/store/app";
 import { toast } from "react-hot-toast";
 import { useState } from 'react';
 import ButtonTest from '../Login/ButtonTest';
 import LoginWalletMobile from '../Login/LoginWalletMobile';
+import { ChatBubbleLeftIcon } from '@heroicons/react/24/solid';
 
 const BottomNav: React.FC = () => {
   const currentProfile = useAppStore((state) => state.currentProfile);
@@ -12,7 +13,7 @@ const BottomNav: React.FC = () => {
 
   return (
     <div>
-    <nav className="fixed bottom-0 left-0 right-0 h-[70px] rounded-t-md bg-blue-700 z-999 flex items-center justify-around px-4 py-3 shadow-md">
+    <nav className="fixed bottom-0 left-0 right-0 h-[70px] rounded-lg border-2 border-grey-700 bg-blue-700 z-999 flex items-center justify-around px-4 py-3 shadow-md">
      {/* //swap timelines */}
     { homePage ? (
       <Link href='/latest'>
@@ -47,7 +48,7 @@ const BottomNav: React.FC = () => {
      <Link href='/messages'>
        <button
        className="text-white hover:text-gray-100 focus:outline-none focus:text-gray-100 border-gray-800">
-        <ChatBubbleBottomCenterIcon className="text-brand-500 h-6 w-6" />{' '}
+        <ChatBubbleOvalLeftIcon className="text-brand-500 h-6 w-6" />{' '}
         </button>
       </Link>
       </div>

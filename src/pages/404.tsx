@@ -12,7 +12,7 @@ export default function Custom404() {
             </Head>
             <div className="flex flex-col items-center justify-start h-full mt-10 md:mt-20">
                 <img
-                    src={`${APP_NAME.URL}/logo.png`}
+                    src={`${APP_NAME}/icon.png`}
                     alt={APP_NAME}
                     draggable={false}
                     height={50}

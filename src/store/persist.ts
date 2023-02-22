@@ -43,7 +43,7 @@ export const usePersistStore = create(
       setNotificationCount: (notificationCount) => set({ notificationCount }),
       setCurrentProfileId: (currentProfileId) => set({ currentProfileId }),
       signIn: ({ accessToken, refreshToken }) => set({ accessToken, refreshToken }),
-      signOut: () => localStorage.removeItem('pinsta.store'),
+      signOut: () => localStorage.removeItem('lensshare.store'),
       hydrateAuthTokens: () => {
         return {
           accessToken: get().accessToken,
@@ -52,7 +52,7 @@ export const usePersistStore = create(
       }
     }),
     {
-      name: 'pinsta.store'
+      name: 'lensshare.store'
     }
   )
 )

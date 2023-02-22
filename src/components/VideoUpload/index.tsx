@@ -157,7 +157,7 @@ const UploadVideo = () => {
                               </div>
                                <input 
                                ref={ref}
-                               type='file' accept='video/mp4,video/x-m4v,video/*'
+                               type='file' accept='video/mp4'
                                name='upload-video'
                                className='hidden'
                                onChange={onChange}

@@ -1,6 +1,6 @@
-import { IS_MAINNET } from '../constants'
+import { IS_MAINNET } from 'src/constants'
 import { aaveMembers } from './aave-members'
-import { pinstaMembers } from './pinsta-members'
+import { lenstokMembers } from './pinsta-members'
 
 export const VERIFIED_CHANNELS = IS_MAINNET
   ? [
@@ -213,7 +213,7 @@ export const VERIFIED_CHANNELS = IS_MAINNET
     '0x0160', // ethglobal.lens
     
     ...aaveMembers,
-    ...pinstaMembers,    
+    ...lenstokMembers,    
   ]
   : [
     '0x5f8e',

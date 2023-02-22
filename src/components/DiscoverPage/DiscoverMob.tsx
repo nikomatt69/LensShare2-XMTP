@@ -21,10 +21,10 @@ const DiscoverMob: NextPage = () => {
 
   return (
     <div>
-      <div className="xl:w-[1200px] lg:w-[1100px] m-auto overflow-hidden h-[100vh]">
+      <div className="xl:w-[1200px] lg:w-[1100px] items-center m-auto overflow-hidden h-[100vh]">
       <Toaster position="bottom-right" />
         <div className="flex gap-6 md:gap-20">
-          <div className="mt-2 mb-8 pb-8 flex flex-col gap-10 overflow-auto overflow-x-hidden h-[88vh] videos flex-1">
+          <div className="mt-2 mb-8 pb-8 flex flex-col items-center gap-10 overflow-auto overflow-x-hidden h-[88vh] videos flex-1">
             <DiscoverMain />
           </div>
         </div>

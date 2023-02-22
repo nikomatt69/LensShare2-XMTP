@@ -64,25 +64,25 @@ const Message: FC<MessageProps> = ({ conversationKey }) => {
         <>
 
             <MetaTags title={title} />
-            <Navbar />
+         <Navbar />
 
-            <div className="flex w-full md:max-w-4xl mx-auto">
+            <div className=" flex-auto bg:hidden sm:w-full h-full  xs:max-w mx-auto">
                 <PreviewList
-                    className="xs:hidden sm:hidden md:hidden lg:block"
+                    className=" hidden xs:hidden sm:hidden md:hidden "
                     selectedConversationKey={conversationKey}
                 />
-                <div className="xs:h-[85vh] mb-0 sm:h-[76vh] md:w-3/4 md:h-[80vh] xl:h-[84vh]">
-                    <Card className="flex  flex-col justify !rounded-tr-xl !rounded-br-xl !rounded-none">
+                <div className=" flex-auto xs:w-[100vh] w-full h-full mb-0 sm:w-[100vh]  md:h-[100vh] xl:h-[100vh]">
+                    <Card className="flex-1 w-full h-full !rounded-tr-lg !rounded-br-lg ">
                         {showLoading ? (
-                            <div className="flex  flex-grow items-center justify-center">
+                            <div className=" flex items-center justify-center">
                                 <Loader />
                             </div>
                         ) : (
                             <>
                                 <MessageHeader profile={profile} />
-                                <MessagesList
+                                <MessagesList 
                                     currentProfile={currentProfile}
-                                    profile={profile}
+                                    profile={profile?.id}
                                     fetchNextMessages={fetchNextMessages}
                                     messages={messages ?? []}
                                     hasMore={hasMore}
@@ -98,7 +98,9 @@ const Message: FC<MessageProps> = ({ conversationKey }) => {
                     </Card>
                 </div>
             </div>
-        </>    
+            <BottomNav />
+        </> 
+
     );
 };
 

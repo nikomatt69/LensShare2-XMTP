@@ -23,21 +23,20 @@ var client_1 = require("@apollo/client");
 var useDebounce_1 = require("src/utils/hooks/useDebounce");
 var react_detect_click_outside_1 = require("react-detect-click-outside");
 var bs_1 = require("react-icons/bs");
-var SearchProfiles_1 = require("src/components/Search/SearchProfiles");
 var PreviewList = function (_a) {
-    var _b, _c, _d;
+    var _b, _c;
     var className = _a.className, selectedConversationKey = _a.selectedConversationKey;
     var router = router_1.useRouter();
     var currentProfile = app_1.useAppStore(function (state) { return state.currentProfile; });
     var addProfileAndSelectTab = message_1.useMessageStore(function (state) { return state.addProfileAndSelectTab; });
     var selectedTab = message_1.useMessageStore(function (state) { return state.selectedTab; });
     var setSelectedTab = message_1.useMessageStore(function (state) { return state.setSelectedTab; });
-    var _e = react_1.useState(false), showSearchModal = _e[0], setShowSearchModal = _e[1];
-    var _f = react_1.useState(''), keyword = _f[0], setKeyword = _f[1];
+    var _d = react_1.useState(false), showSearchModal = _d[0], setShowSearchModal = _d[1];
+    var _e = react_1.useState(''), keyword = _e[0], setKeyword = _e[1];
     var debouncedValue = useDebounce_1["default"](keyword, 500);
-    var _g = react_1.useState(false), showResults = _g[0], setResults = _g[1];
-    var _h = react_1.useState(lens_1.SearchRequestTypes.Profile), activeSearch = _h[0], setActiveSearch = _h[1];
-    var _j = useMessagePreviews_1["default"](), authenticating = _j.authenticating, loading = _j.loading, messages = _j.messages, profilesToShow = _j.profilesToShow, requestedCount = _j.requestedCount, profilesError = _j.profilesError;
+    var _f = react_1.useState(false), showResults = _f[0], setResults = _f[1];
+    var _g = react_1.useState(lens_1.SearchRequestTypes.Profile), activeSearch = _g[0], setActiveSearch = _g[1];
+    var _h = useMessagePreviews_1["default"](), authenticating = _h.authenticating, loading = _h.loading, messages = _h.messages, profilesToShow = _h.profilesToShow, requestedCount = _h.requestedCount, profilesError = _h.profilesError;
     var clearMessagesBadge = message_1.useMessagePersistStore(function (state) { return state.clearMessagesBadge; });
     var sortedProfiles = Array.from(profilesToShow).sort(function (_a, _b) {
         var _c, _d;
@@ -47,7 +46,7 @@ var PreviewList = function (_a) {
         var messageB = messages.get(keyB);
         return (((_c = messageA === null || messageA === void 0 ? void 0 : messageA.sent) === null || _c === void 0 ? void 0 : _c.getTime()) || 0) >= (((_d = messageB === null || messageB === void 0 ? void 0 : messageB.sent) === null || _d === void 0 ? void 0 : _d.getTime()) || 0) ? -1 : 1;
     });
-    var _k = client_1.useLazyQuery(lens_1.SearchProfilesDocument), getProfiles = _k[0], _l = _k[1], searchResults = _l.data, searchLoading = _l.loading;
+    var _j = client_1.useLazyQuery(lens_1.SearchProfilesDocument), getProfiles = _j[0], _k = _j[1], searchResults = _k.data, searchLoading = _k.loading;
     var onDebounce = function () {
         if (keyword.trim().length) {
             getProfiles({
@@ -130,7 +129,7 @@ var PreviewList = function (_a) {
             })))),
         React.createElement(Modal_1.Modal, { title: "New message", icon: React.createElement(bi_1.BiMessageRoundedDots, { className: "text-brand2 h-5 w-5" }), size: "sm", show: showSearchModal, onClose: function () { return setShowSearchModal(false); } },
             React.createElement("div", { className: "w-full px-4 pt-4" },
-                React.createElement("div", { ref: searchRef, className: "relative w-full overflow-hidden border border-gray-300 cursor-default border-gray-700 bg-gray-100 bg-gray-800 rounded-full sm:text-sm" },
+                React.createElement("div", { ref: searchRef, className: "relative w-full overflow-hidden border border-gray-300 cursor-default border-gray-700  rounded-full sm:text-sm" },
                     React.createElement("input", { className: "w-full py-3 pl-12 pr-4 text-sm bg-transparent focus:outline-none", onChange: function (e) { return onSearchProfile(e); }, placeholder: "Search for someone to message...", value: keyword }),
                     React.createElement("div", { className: "absolute inset-y-0 left-0 flex items-center pl-4" },
                         React.createElement(bs_1.BsSearch, { className: "w-4 h-4 text-gray-600", "aria-hidden": "true" })))),
@@ -138,10 +137,8 @@ var PreviewList = function (_a) {
                 React.createElement(Loader_1["default"], null)),
             showResults &&
                 React.createElement("div", { className: "w-full py-4" },
-                    React.createElement("div", { className: "flex flex-col divide-y divide-gray-700" },
-                        ((_c = searchResults === null || searchResults === void 0 ? void 0 : searchResults.search) === null || _c === void 0 ? void 0 : _c.__typename) === 'ProfileSearchResult' && searchProfiles.length > 0 && (React.createElement(SearchProfiles_1["default"], { results: searchProfiles, loading: loading, clearSearch: clearSearch, linkToProfile: false, onProfileSelected: onProfileSelected })),
-                        ((_d = searchResults === null || searchResults === void 0 ? void 0 : searchResults.search) === null || _d === void 0 ? void 0 : _d.__typename) === 'ProfileSearchResult' && searchProfiles.length === 0 && (React.createElement("div", { className: "flex flex-col items-center justify-center" }, "No results found")))),
+                    React.createElement("div", { className: "flex flex-col divide-y divide-gray-700" }, ((_c = searchResults === null || searchResults === void 0 ? void 0 : searchResults.search) === null || _c === void 0 ? void 0 : _c.__typename) === 'ProfileSearchResult' && searchProfiles.length === 0 && (React.createElement("div", { className: "flex flex-col items-center justify-center" }, "No results found")))),
             !showResults && currentProfile &&
-                React.createElement(Following_1["default"], { profile: currentProfile, onProfileSelected: onProfileSelected }))));
+                React.createElement(Following_1["default"], { profile: currentProfile }))));
 };
 exports["default"] = PreviewList;

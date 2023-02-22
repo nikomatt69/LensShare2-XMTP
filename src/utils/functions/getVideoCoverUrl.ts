@@ -1,11 +1,11 @@
-import { APP_NAME } from '../constants'
-import type { PinstaPublication } from '../custom-types'
-import sanitizeIpfsUrl from './sanitizeIpfsUrl'
+import { APP_NAME } from 'src/constants'
+import type { LenstokPublication } from '../custom-types'
+import sanitizeIpfsUrl from './sanitizeIpfsUrl2'
 
-const getVideoCoverUrl = (pin: PinstaPublication): string => {
+const getVideoCoverUrl = (pin: LenstokPublication): string => {
     const url =
         pin.metadata.cover?.original?.url ||
-        `${APP_NAME.URL}/fallbackThumbnail.png`
+        `${APP_NAME}/fallbackThumbnail.png`
     return sanitizeIpfsUrl(url)
 }
 

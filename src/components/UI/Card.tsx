@@ -19,7 +19,7 @@ export const Card: FC<CardProps> = ({
     return (
         <Tag
             className={clsx(
-                forceRounded ? ' flex rounded-xl' : 'rounded-none sm:rounded-xl',
+                forceRounded ? 'flex rounded-xl' : 'rounded-none sm:rounded-xl',
                 'border  bg-white ',
                 className
             )}

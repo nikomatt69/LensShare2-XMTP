@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Video from 'src/components/HomePage/Video'
 import imageCdn from 'src/utils/functions/imageCdn'
-import sanitizeIpfsUrl from 'src/utils/functions/sanitizeIpfsUrl'
+import sanitizeIpfsUrl from 'src/utils/functions/sanitizeIpfsUrl2'
 import React, { FC } from 'react'
 
 interface Props {

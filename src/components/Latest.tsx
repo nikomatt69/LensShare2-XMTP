@@ -51,8 +51,11 @@ const Latest = () => {
     ) {
       return (
         publication.metadata.media[0].original.url.startsWith(
-          "https://lens.infura-ipfs.io"
+          "https://lens.infura-ipfs.io",
         ) ||
+        publication.metadata.media[0].original.url.startsWith("https://lens.infura-ipfs.io/ipfs/") ||
+        publication.metadata.media[0].original.url.startsWith("https://infura-ipfs.io/ipfs") ||
+        publication.metadata.media[0].original.url.startsWith("ipfs.infura.io:5001") ||
         publication.metadata.media[0].original.url.startsWith("ipfs://") ||
         publication.metadata.media[0].original.url.startsWith("https://arweave")
       );

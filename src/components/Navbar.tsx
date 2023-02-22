@@ -15,6 +15,13 @@ import MenuTransition from "./UI/MenuTransition";
 import { NextLink } from "./UI/NextLink";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import MessageIcon from "./Messages/MessageIcon";
+import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
+import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { BellIcon } from "@heroicons/react/24/outline";
+
+
+
+
 
 const Navbar: FC = () => {
   const currentProfile = useAppStore((state) => state.currentProfile);
@@ -23,7 +30,7 @@ const Navbar: FC = () => {
   console.log('CURRENT PROFILE', currentProfile?.picture)
   
   return (
-    <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
+    <div className="w-full flex justify-between rounded-xl items-center border-4 border-grey-700 p-2 ">
       <Link href="/">
         <div className="w-[100px] md:w-[129px]">
           <Image
@@ -36,6 +43,7 @@ const Navbar: FC = () => {
       </Link>
 
     <SearchBar />
+    
 
 
     
@@ -43,8 +51,8 @@ const Navbar: FC = () => {
 
 
     <div>
-      <div className='flex gap-5 md:gap-10 '>
       
+      <div className='flex gap-5 md:gap-10 '>
         <Link href='/upload'>
         <button className='hidden md:flex px-2 py-2 md:px-4 text-md font-semibold items-center gap-2 cursor-pointer
          bg-white rounded-full text-md border-[1px] border-[#57B8FF] text-[#000000] hover:bg-[#57B8FF]' >
@@ -52,7 +60,19 @@ const Navbar: FC = () => {
          <VideoCameraIcon className='h-6 h-6 text-black' />{' '}
          <span className='hidden md:block'>Upload </span>
         </button>  
-        </Link>
+      </Link>
+
+        
+      <Link href={`/notifications`}>
+        <button>
+         <BellIcon className="h-6 w-6 text-black" />
+        </button>                  
+      </Link> 
+
+        
+
+      
+         
 
 
       <div className="flex">
@@ -83,7 +103,7 @@ const Navbar: FC = () => {
            </Link>
              </div>
         ) : (
-          <div className='block lg:hidden'>
+          <div className='block'>
           <ConnectButton />
           </div>
         )}

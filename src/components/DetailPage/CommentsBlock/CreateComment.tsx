@@ -20,8 +20,9 @@ import {
   useCreateCommentTypedDataMutation,
   useCreateCommentViaDispatcherMutation,
 } from "@/types/graph";
-import lit from "@/lib/lit";
+import lit from "src/lib/lit";
 import LitJsSdk from "@lit-protocol/sdk-browser";
+import { LensHubProxy } from "@/utils/abis";
 
 interface Props {
   publication: Publication;
@@ -41,20 +42,8 @@ const CreateComment: FC<Props> = ({ publication, refetchComments }) => {
 
   const { signTypedDataAsync } = useSignTypedData({ onError });
 
-  async function encryptComment(comment: string) {
-    try {
-      const { encryptedFile, encryptedSymmetricKey } = await lit.encryptString(
-        comment,
-        publication?.profile?.ownedBy,
-        currentProfile?.ownedBy
-      );
-      // Convert a Blob to a base64urlpad string. This function returns a promise.
-      const encryptedComment = await LitJsSdk.blobToBase64String(encryptedFile);
-      return { encryptedComment, encryptedSymmetricKey };
-    } catch (err) {
-      console.log("Error during encryption", err);
-    }
-  }
+
+   
   const onCompleted = () => {
     toast.success("Post has been commented!");
     setComment("");
@@ -82,7 +71,7 @@ const CreateComment: FC<Props> = ({ publication, refetchComments }) => {
 
   const { error, write } = useContractWrite({
     address: LENSHUB_PROXY,
-    abi: LENS_HUB_ABI,
+    abi: LensHubProxy,
     functionName: "commentWithSig",
     mode: "recklesslyUnprepared",
     onSuccess: ({ hash }) => {
@@ -171,46 +160,6 @@ const CreateComment: FC<Props> = ({ publication, refetchComments }) => {
   };
 
   async function createComment() {
-    let encryptedComment = "";
-    let encryptedUri = "";
-    if (!currentProfile) {
-      return toast.error("Please connect your Wallet!");
-    }
-    console.log("Is encryped toggle", isEncrypted);
-    // 1. Encrypt comment with Lit
-    if (isEncrypted) {
-      setIsSubmitting(true);
-      const litResponse = await encryptComment(comment);
-      //console.log("LitResponse:", litResponse);
-      encryptedComment = litResponse?.encryptedComment;
-      const encryptedKey = litResponse?.encryptedSymmetricKey;
-      //console.log("ENCRYPTED COMMENT", encryptedComment);
-
-      // 2. Store encrypted File and encrypted Key and retrieve URI
-      const body = {
-        litComment: encryptedComment,
-        litKkey: encryptedKey,
-      };
-      try {
-        console.log("Fetch api route");
-        const response = await fetch("/api/store-encrypted", {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(body),
-        });
-
-        if (response.status !== 200) {
-          alert("Something went wrong while creating CID");
-        } else {
-          let responseJSON = await response.json();
-          const cid = responseJSON.cid;
-          console.log("Encrypted URI", cid);
-          encryptedUri = `https://infura-ipfs.io/ipfs/${responseJSON.cid}`;
-        }
-      } catch (err) {
-        console.log("Error while uploading encrypted comment to ipfs", err);
-      }
-    }
     try {
       setIsSubmitting(true);
       const ipfsResult = await uploadIpfs({
@@ -219,20 +168,11 @@ const CreateComment: FC<Props> = ({ publication, refetchComments }) => {
         metadata_id: uuid(),
         description: "Description",
         locale: "en-US",
-        content: isEncrypted ? encryptedComment : comment,
+        content: comment,
         external_url: null,
         image: null,
         imageMimeType: null,
         name: "Name",
-        attributes: isEncrypted
-          ? [
-              {
-                displayType: "string",
-                traitType: "encrypted",
-                value: encryptedUri,
-              },
-            ]
-          : [],
         tags: [],
         appId: APP_NAME,
       });

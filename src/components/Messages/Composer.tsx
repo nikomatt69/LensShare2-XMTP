@@ -202,10 +202,10 @@ const Composer: FC<Props> = ({ sendMessage, conversationKey, disabledInput }) =>
     };
 
     return (
-        <div className="flex space-x-4 items-center p-4">
+        <div className="flex text-black space-x-4 items-center p-4">
             <Input
                 type="text"
-                className='!rounded-full'
+                className='rounded-full'
                 placeholder={`Type Something`}
                 value={message}
                 disabled={disabledInput}
@@ -220,17 +220,17 @@ const Composer: FC<Props> = ({ sendMessage, conversationKey, disabledInput }) =>
                 className='hidden'
                 onChange={handleUploadImage}
             />
-            {/* <input
+            <input
                 ref={videoRef}
                 type='file'
                 accept={ALLOWED_VIDEO_TYPES.join(',')}
                 multiple={false}
                 className='hidden'
                 onChange={handleUploadVideo}
-            /> */}
-            {/* <button onClick={handleSendVideo}>
+            /> 
+             <button onClick={handleSendVideo}>
                 <BsCameraVideo size={24}/>
-            </button> */}
+            </button> 
             <Giphy setGifAttachment={(gif: IGif) => setGifAttachment(gif)} />
             <button onClick={handleSendImage}>
                 <BsImage size={24} className="fill-brand2-500 fill-brand2-400"/>

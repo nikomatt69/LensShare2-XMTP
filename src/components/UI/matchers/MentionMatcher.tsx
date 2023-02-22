@@ -1,5 +1,4 @@
 
-import UserPreview from '@components/Common/UserPreview';
 import formatHandle from 'src/utils/functions/formatHandle';
 import { Matcher } from 'interweave';
 import type { Profile } from 'src/utils/lens';

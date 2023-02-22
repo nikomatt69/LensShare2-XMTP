@@ -22,7 +22,7 @@ import { useLazyQuery } from '@apollo/client';
 import useDebounce from 'src/utils/hooks/useDebounce';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import { BsSearch } from 'react-icons/bs';
-import Profiles from 'src/components/Search/SearchProfiles';
+import ProfileList from 'src/components/Search/SearchProfiles';
 
 interface Props {
   className?: string;
@@ -129,8 +129,8 @@ const PreviewList: FC<Props> = ({ className, selectedConversationKey }) => {
                 className
             )}
         >
-            <Card className="flex h-full flex-col justify-between !border-r-0 !rounded-tl-xl !rounded-bl-xl !rounded-none">
-                <div className="flex items-center justify-between border-b p-5 border-gray-700">
+            <Card className="flex h-full flex-col justify-between !border-r-0 !rounded-tl-3xl !rounded-bl-3xl !rounded-none">
+                <div className="flex items-center justify-between border-4 border-black rounded-3xl p-5 ">
                     <div className="font-bold">Messages</div>
                     {currentProfile && !showAuthenticating && !showLoading && (
                         <button onClick={newMessageClick} type="button">
@@ -138,7 +138,7 @@ const PreviewList: FC<Props> = ({ className, selectedConversationKey }) => {
                         </button>
                     )}
                 </div>
-                <div className="flex">
+                <div className="flex sm:hidden">
                     <div
                         onClick={() => setSelectedTab('Following')}
                         className={clsx(
@@ -222,17 +222,19 @@ const PreviewList: FC<Props> = ({ className, selectedConversationKey }) => {
                 <div className="w-full px-4 pt-4">
                     <div
                         ref={searchRef} 
-                        className="relative w-full overflow-hidden border border-gray-300 cursor-default border-gray-700 bg-gray-100 bg-gray-800 rounded-full sm:text-sm">
+                        className="relative w-full overflow-hidden border-2 rounded-lg  cursor-default border-gray-700  rounded-full sm:text-sm">
                         <input
                             className="w-full py-3 pl-12 pr-4 text-sm bg-transparent focus:outline-none"
                             onChange={(e) => onSearchProfile(e)}
                             placeholder="Search for someone to message..."
                             value={keyword}
+                            
                         />
                         <div className="absolute inset-y-0 left-0 flex items-center pl-4">
                             <BsSearch
-                                className="w-4 h-4 text-gray-600"
+                                className="h-5 w-5 text-gray-400"
                                 aria-hidden="true"
+                                
                             />
                         </div>
                     </div>
@@ -243,15 +245,8 @@ const PreviewList: FC<Props> = ({ className, selectedConversationKey }) => {
                 {showResults &&
                     <div className="w-full py-4">
                         <div className="flex flex-col divide-y divide-gray-700">
-                            {searchResults?.search?.__typename === 'ProfileSearchResult' && searchProfiles.length > 0 && (
-                                <Profiles
-                                    results={searchProfiles as Profile[]}
-                                    loading={loading}
-                                    clearSearch={clearSearch}
-                                    linkToProfile={false}
-                                    onProfileSelected={onProfileSelected}
-                                />
-                            )}
+                            {searchResults?.search?.__typename === 'ProfileSearchResult' && searchProfiles.length > 0  }
+                            
                             {searchResults?.search?.__typename === 'ProfileSearchResult' && searchProfiles.length === 0 && (
                                 <div className="flex flex-col items-center justify-center">
                                     No results found
@@ -259,11 +254,10 @@ const PreviewList: FC<Props> = ({ className, selectedConversationKey }) => {
                             )}
                         </div>
                     </div>
-                }   
+                } 
                 {!showResults && currentProfile &&
                     <Following
                         profile={currentProfile}
-                        onProfileSelected={onProfileSelected}
                     />
                 }
             </Modal>

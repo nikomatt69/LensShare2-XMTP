@@ -1,14 +1,15 @@
-import { MAINNET_DEFAULT_TOKEN } from 'src/utils/contracts';
-
+"use strict";
+exports.__esModule = true;
+var constants_1 = require("src/constants");
 /**
  *
  * @param symbol - The symbol of the token
  * @returns the address of the token
  */
-const getAssetAddress = (symbol: string) => {
+var getAssetAddress = function (symbol) {
     switch (symbol) {
         case 'WMATIC':
-            return MAINNET_DEFAULT_TOKEN;
+            return constants_1.MAINNET_DEFAULT_TOKEN;
         case 'WETH':
             return '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619';
         case 'USDC':
@@ -18,8 +19,7 @@ const getAssetAddress = (symbol: string) => {
         case 'NCT':
             return '0xD838290e877E0188a4A44700463419ED96c16107';
         default:
-            return MAINNET_DEFAULT_TOKEN;
+            return constants_1.MAINNET_DEFAULT_TOKEN;
     }
 };
-
-export default getAssetAddress;
+exports["default"] = getAssetAddress;

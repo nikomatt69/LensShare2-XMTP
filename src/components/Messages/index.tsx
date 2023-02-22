@@ -9,7 +9,7 @@ import {useAppStore} from 'src/store/app';
 
 const NoConversationSelected = () => {
     return (
-        <div className="flex h-full flex-col text-center">
+        <div className="flex hidden h-full flex-col text-center">
             <div className="m-auto">
                 <span className="text-center text-5xl">👋</span>
                 <h3 className="mt-3 mb-2 text-lg">
@@ -34,10 +34,10 @@ const Messages: NextPage = () => {
     return (
         <>
             <MetaTags title={`Messages :: ${APP_NAME}`} />
-            <div className="flex w-full md:max-w-6xl mx-auto">
+            <div className="flex-grow w-full h-full xs:h-3/4 w-full rounded-3xl mx-auto">
                 <PreviewList />
-                <div className="xs:hidden sm:hidden sm:h-[76vh] md:w-3/4 md:hidden md:h-[80vh] lg:block xl:h-[84vh]">
-                    <Card className="h-full !rounded-tr-xl !rounded-br-xl !rounded-none">
+                <div className="xs:w-3/4 sm:h-[50-vh] sm:w-3/4 sm:hidden sm:h-[76vh] md:w-3/4 md:hidden md:h-[80vh] lg:block xl:h-[84vh]">
+                    <Card className=" flex-grow xs:w-full xs:h-full !rounded-tr-xl !rounded-br-xl !rounded-none">
                         <NoConversationSelected />
                     </Card>
                 </div>

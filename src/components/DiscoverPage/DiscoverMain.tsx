@@ -19,12 +19,12 @@ const DiscoverMain = () => {
 
   const suggestedaccountsClass =
     selectedTab === "suggestedaccounts"
-      ? "border-b-2 border-black"
+      ? " border-black"
       : "text-gray-400";
   const categoriesClass =
-    selectedTab === "categories" ? "border-b-2 border-black" : "text-gray-400";
+    selectedTab === "categories" ? " border-black" : "text-gray-400";
   const searchClass =
-    selectedTab === "search" ? "border-b-2 border-black" : "text-gray-400";
+    selectedTab === "search" ? " border-black" : "text-gray-400";
 
   console.log("oioioioio", selectedTab);
   console.log("a", suggestedaccountsClass);
@@ -34,10 +34,10 @@ const DiscoverMain = () => {
   return (
     <div className="flex justify-center mx-4">
       <div className="w-full max-w-[1150px]">
-        <div className="flex justify-center items-center p-5 border-b border-gray-200 bg-white w-full">
+        <div className="flex justify-center items-center p-5 border-4 border-black rounded-full bg-white w-full">
           <span className="text-xl font-semibold text-center">Discover</span>
         </div>
-        <div className="flex justify-center items-center gap-10 p-5 border-b mb-5 border-gray-200 bg-white w-full">
+        <div className="flex justify-center items-center gap-10 p-5 mb-5 border-gray-200 bg-white w-full">
           <span
             className={`text-md font-semibold cursor-pointer ${suggestedaccountsClass} mt-2`}
             onClick={() => setSelectedTab("suggestedaccounts")}
@@ -45,7 +45,7 @@ const DiscoverMain = () => {
             Users
           </span>
           <span
-            className={`text-md font-semibold cursor-pointer ${categoriesClass} mt-2`}
+            className={`text-md font-semibold cursor-pointer  ${categoriesClass} mt-2`}
             onClick={() => setSelectedTab("categories")}
           >
             Categories

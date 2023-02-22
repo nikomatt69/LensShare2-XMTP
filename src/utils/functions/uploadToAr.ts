@@ -1,9 +1,9 @@
 import axios from 'axios'
-import type { PublicationMetadataV2Input } from 'src/utils/lens'
+import type { PublicationMetadataV2Input } from '@/utils/lens'
 import toast from 'react-hot-toast'
 
 import type { ProfileMetadata } from '../custom-types'
-import { PINSTA_API_URL } from 'src/constants'
+import { PINSTA_API_URL } from '@/constants'
 
 const uploadToAr = async (
   data: PublicationMetadataV2Input | ProfileMetadata

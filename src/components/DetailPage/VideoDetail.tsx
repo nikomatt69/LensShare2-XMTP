@@ -6,8 +6,8 @@ import { Toaster } from "react-hot-toast";
 
 import Comments from "./CommentsBlock/Comments";
 import { useQuery } from "@apollo/client";
-import { Publication, PublicationDocument, Profile } from "@/types/lens";
-import { usePublicationQuery, useUserProfilesQuery } from "@/types/graph";
+import { Publication, PublicationDocument, Profile } from "src/types/lens";
+import { usePublicationQuery, useUserProfilesQuery } from "src/types/graph";
 import getAvatar from "@/lib/getAvatar";
 import { copyToClipboard } from "@/utils/clipboard";
 import getMedia from "@/lib/getMedia";

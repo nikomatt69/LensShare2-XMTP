@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { BiChevronLeft } from 'react-icons/bi';
+import getAvatar from '@/lib/getAvatar';
 
 
 interface Props {
@@ -30,13 +31,20 @@ const MessageHeader: FC<Props> = ({ profile }) => {
     }
 
     return (
-        <div className="flex items-center justify-between border-b-[1px] px-4 py-2 border-gray-700">
-            <div className="flex items-center">
-                <BiChevronLeft onClick={onBackClick} className="mr-1 h-6 w-6 cursor-pointer lg:hidden" />
+        <div className="flex items-center rounded-xl justify-between bg-blue-100 border-4 border-grey-700  py-4 px-3 ">
+            <div className="flex rounded-xl items-center">
+                <BiChevronLeft onClick={onBackClick} className="mr-1 text-blue h-6 w-6 cursor-pointer lg:hidden" />
                 
             </div>
+            <img
+                        // @ts-ignore
+                        src={getAvatar(profile)}
+                        className="mr-2 h-10 w-10 rounded-full border-4 border-black"
+                        alt={(profile?.handle)}
+                    />
             {!following ? (
                 <FollowButton
+
                     
                     profile={profile}
                     setFollowing={setFollowing}

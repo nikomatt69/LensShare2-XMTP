@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import type { FC } from "react";
 import { sanitizeIpfsUrl } from "@/utils/sanitizeIpfsUrl";
 import { BsPlay } from "react-icons/bs";
+import { PlayButton } from '@livepeer/react';
 
 
   const ProfileVideos = () => {
@@ -50,7 +51,7 @@ import { BsPlay } from "react-icons/bs";
                     <Link href={`/detail/${pub.id}`} key={pub.id}>
                         <a className="block h-0 border-2 border-black rounded-lg relative pb-[131%]">
                         <video
-                        autoPlay
+                        onClick={(e) => e.currentTarget.play()}
                         preload="metadata"
                         ref={videoRef}
                         src={sanitizeIpfsUrl(pub.metadata.media[0].original.url)}

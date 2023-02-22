@@ -17,7 +17,7 @@ const SearchPage: NextPage = () => {
 
   return (
     <div>
-      <div className="xl:w-[1200px] lg:w-[1100px] m-auto overflow-hidden h-[100vh]">
+      <div className="xl:w-[1200px] items-center lg:w-[1100px] m-auto overflow-hidden h-[100vh]">
       <Toaster position="bottom-right" />
         <Navbar />
         <div className="flex gap-6 md:gap-20">

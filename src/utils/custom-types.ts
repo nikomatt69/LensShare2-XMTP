@@ -45,8 +45,8 @@ export type ReferenceModuleType = {
   } | null
 }
 
-//export type PinstaPublication = Post & Comment & Mirror
-export type PinstaPublication = Post & Comment & Mirror
+//export type LenstokPublication = Post & Comment & Mirror
+export type LenstokPublication = Post & Comment & Mirror
 
 export type IPFSUploadResult = {
   hash?: string
@@ -70,7 +70,7 @@ export type ProfileMetadata = {
   attributes: Attribute[]
 }
 
-export type PinstaCollectModule = FreeCollectModuleSettings &
+export type LenstokCollectModule = FreeCollectModuleSettings &
   FeeCollectModuleSettings &
   RevertCollectModuleSettings &
   TimedFeeCollectModuleSettings &
@@ -88,7 +88,7 @@ export interface ProfileInterest {
   subCategories: Array<{ label: string; id: string }>
 }
 
-export type PinstaFollowModule = FeeFollowModuleSettings &
+export type LenstokFollowModule = FeeFollowModuleSettings &
   ProfileFollowModuleSettings &
   RevertFollowModuleSettings;
 
@@ -140,22 +140,22 @@ export type QueuedCommentType = {
 
 export type QueuedPublicationType = {
   publication: CreatePin
-  previews: NewPinstaAttachment[]
+  previews: NewLenstokAttachment[]
   txnId?: string
   txnHash?: string
 }
 
-export interface PinstaAttachment {
+export interface LenstokAttachment {
   item: string;
   type: string;
   altTag: string;
 }
 
-export interface NewPinstaAttachment extends Omit<PinstaAttachment, 'item'> {
+export interface NewLenstokAttachment extends Omit<LenstokAttachment, 'item'> {
   id: string;
   item?: string;
   previewItem?: string;
 }
 
 
-export const PinstaMainContentFocus = [PublicationMainFocus.Image] //PublicationMainFocus.Video, PublicationMainFocus.Audio, PublicationMainFocus.Text
+export const LenstokMainContentFocus = [PublicationMainFocus.Image , PublicationMainFocus.Video];

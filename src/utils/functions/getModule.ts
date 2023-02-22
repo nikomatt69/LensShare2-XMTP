@@ -1,4 +1,4 @@
-import { CollectModules, FollowModules, ReferenceModules } from 'src/utils/lens';
+import { CollectModules, FollowModules, ReferenceModules } from 'src/types/lens';
 
 interface ModuleConfig {
     name: string;

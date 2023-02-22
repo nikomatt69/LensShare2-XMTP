@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(function Input(
         )}
         <div className="flex">
             {prefix && (
-                <span className="inline-flex items-center px-3 lt-text-gray-500 bg-gray-100 rounded-l-xl border border-r-0 border-gray-300 dark:bg-gray-900 dark:border-gray-700">
+                <span className="inline-flex items-center px-3 lt-text-gray-500 bg-gray-100 rounded-l-xl border border-r-0 border-gray-300 dark:bg-gray-900 ">
                     {prefix}
                 </span>
             )}
@@ -47,7 +47,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(function Input(
                     {
                     'opacity-60 bg-gray-500 bg-opacity-20': props.disabled
                     },
-                    'flex items-center border bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 w-full  ring-0 focus-within:ring-0 focus-visible:ring-0'
+                    'flex items-center border bg-white  border-gray-300  w-full  ring-0 focus-within:ring-0 focus-visible:ring-0'
                 )}
             >
                 <input

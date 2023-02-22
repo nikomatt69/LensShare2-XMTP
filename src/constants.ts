@@ -6,6 +6,12 @@ export const APP_ID = "lensshare";
 export const APP_NAME = "LensShare";
 export const LENSTOK_URL = process.env.NEXT_PUBLIC_LENSTOK_URL;
 
+export const PINSTA_API_URL = 'https://store.sealightswap.org';
+
+export const NEXT_PUBLIC_EVER_BUCKET_NAME = 'lensshare'
+export const EVER_ENDPOINT = 'https://endpoint.4everland.co'
+export const EVER_REGION = 'us-west-2'
+
 
 export const XMTP_ENV = IS_MAINNET ? 'production' : 'dev';
 export const XMTP_PREFIX = 'lens.dev/dm';
@@ -31,8 +37,6 @@ export const LS_KEYS = {
   TRANSACTION_STORE: "transaction.store",
   TIMELINE_STORE: "timeline.store",
   MESSAGE_STORE: "message.store",
-
-
 };
 
 
@@ -93,12 +97,11 @@ export const API_KEY = process.env.NEXT_PUBLIC_STUDIO_API_KEY
 
 export const LIT_PROTOCOL_ENV = IS_MAINNET ? "polygon" : "mumbai"
 
-export const DEFAULT_COLLECT_TOKEN = '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270'
 export const GIPHY_TOKEN = 'mztAE0vdQdlfCYsM11E6UaPjUmjpYDHV'
 
-export const MESSAGE_PAGE_LIMIT = 15;
-export const SCROLL_THRESHOLD = 0.5;
-export const MIN_WIDTH_DESKTOP = 1024;
+export const MESSAGE_PAGE_LIMIT = 10;
+export const SCROLL_THRESHOLD = 0.1;
+export const MIN_WIDTH_DESKTOP = 600;
 
 // Named transforms
 export const AVATAR = 'avatar';

@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from '../constants';
+import { ERROR_MESSAGE } from 'src/constants';
 import toast from 'react-hot-toast';
 
 const onError = (error: any) => {

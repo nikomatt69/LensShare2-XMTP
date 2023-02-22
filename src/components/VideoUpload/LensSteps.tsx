@@ -5,12 +5,12 @@ import {
   CreatePublicPostRequest,
   PublicationMetadataMediaInput,
   PublicationMetadataV2Input,
-} from "@/types/lens";
+} from "src/utils/lens";
 import {
   PublicationMainFocus,
   PublicationMetadataDisplayTypes,
   CreatePostTypedDataDocument,
-} from "@/types/lens";
+} from "src/utils/lens";
 import getSignature from "@/lib/getSignature";
 import getUserLocale from "@/lib/getUserLocale";
 import { splitSignature } from "ethers/lib/utils";
@@ -23,6 +23,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ARWEAVE_WEBSITE_URL } from "@/constants";
 import { LENSTOK_URL } from "@/constants";
 import { getCollectModule } from "@/utils/getCollectModule";
+import { LensHubProxy } from "@/utils/abis";
 
 const LensSteps = () => {
   const uploadedVideo = useAppStore((state) => state.uploadedVideo);
@@ -62,7 +63,7 @@ const LensSteps = () => {
     write,
   } = useContractWrite({
     address: LENSHUB_PROXY,
-    abi: LENS_HUB_ABI,
+    abi: LENS_HUB_ABI ,
     functionName: "postWithSig",
     mode: "recklesslyUnprepared",
     onSuccess: onCompleted,

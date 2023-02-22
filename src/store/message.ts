@@ -4,7 +4,7 @@ import { toNanoString } from '@xmtp/xmtp-js';
 import type { Profile } from 'src/utils/lens';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { NewPinstaAttachment } from 'src/utils/custom-types';
+import { NewLenstokAttachment } from 'src/utils/custom-types';
 
 type TabValues = 'Following' | 'Requested';
 
@@ -28,8 +28,8 @@ interface MessageState {
     setSelectedProfileId: (selectedProfileId: string) => void;
     selectedTab: TabValues;
     setSelectedTab: (selectedTab: TabValues) => void;
-    attachment: NewPinstaAttachment;
-    setAttachment: (attachment: NewPinstaAttachment) => void;
+    attachment: NewLenstokAttachment;
+    setAttachment: (attachment: NewLenstokAttachment) => void;
     isUploading: boolean;
     setIsUploading: (isUploading: boolean) => void;
 }
@@ -156,7 +156,7 @@ export const useMessagePersistStore = create(
             setUnsentMessages: (unsentMessages) => set(() => ({ unsentMessages }))
         }),
         {
-            name: 'pinsta.message.store',
+            name: 'lensshare.message.store',
             // Persist storage doesn't work well with Map by default.
             // Workaround from: https://github.com/pmndrs/zustand/issues/618#issuecomment-954806720.
             serialize: (data) => {

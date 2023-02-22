@@ -14,6 +14,7 @@ import { useBroadcastMutation, useCreateMirrorTypedDataMutation, useCreateMirror
 import getSignature from '@/lib/getSignature';
 import { splitSignature } from 'ethers/lib/utils';
 import Spinner from '@/components/Spinner';
+import { LensHubProxy } from '@/utils/abis';
 
 //should also add authorisation so user cant like posttwice
 
@@ -49,7 +50,7 @@ const MirrorButton: FC<Props> = ({publication}) => {
 
     const { isLoading: writeLoading, write } = useContractWrite({
       address: LENSHUB_PROXY,
-      abi: LENS_HUB_ABI,
+      abi: LensHubProxy,
       functionName: 'mirrorWithSig',
       mode: 'recklesslyUnprepared',
       onSuccess: onCompleted,
