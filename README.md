@@ -78,4 +78,4 @@ In addition to the core social features, LensShare also includes the Lens collec
 Comments, encrypted with Lit Protocol give further user control on both the creator and user side. 
 
 ## Credits
-LensShare was created by @N44TS, @driespindola, @PaoloCalzone
+LensShare was created by @Nikoemme.lens @N44TS, @driespindola, @PaoloCalzone
