@@ -1,11 +1,8 @@
-# 🌱 LensShare
+# LensShare
 
 A decentralised video sharing social platform built on Lens Protocol. 
 With LensShare, users can share and discover short videos through live streaming, uploads, and social shares. (TL:DR a decentralised TikTok)
 
-Live Demo: [LensShare Testnet](http://LensShare-gamma.vercel.app)
-
-For the best experience view on web (although mobile works too just not as much, autoplay not compatible on iOS, although android should be fine.)
 
 ## Summary
 
@@ -57,66 +54,6 @@ For full transparency we started to build LensShare as part of the Encode/WBW3 a
 - Arweave
 - Lit Protocol
 - Livepeer
-
-## Demo Images
-Here are some images of LensShare in action:
-
-**Web**
-
-1) Landing page, you will land on the for you page where you will find a timeline of videos to scroll through. Want a different view? there is a second timeline of the 'Latest' video posts also available and some suggested accounts to look at.
-<img src="https://i.imgur.com/ti197mz.png" width="500">
-
-
-2) The best way to experience LensShare is to connect your wallet and login with Lens. 
-<img src="https://i.imgur.com/L17GmeC.png" width="500">
-
-
-3) If you need a testnet Lens handle, we gotchu, you’ll find the link to easily mint one at the bottom of the sidebar. It takes you to [Lens-do-it](https://lens-do-it.vercel.app/), created by our dev @paolo to easily mint a testnet handle.
-<img src="https://i.imgur.com/IM8fJrM.png" width="500">
-
-
-4) Social sharing: now you can interact and Follow(or unfollow), Like, Comment, Collect, Upload, using these buttons. You can also now see who you follow, click on their profile, see what they're up to
-<img src="https://i.imgur.com/ZpKyH2W.png" width="500">
-
-
-5) Clicking upload will bring you here: Select the file you want to upload, choose a title and description. you can also choose to use the Lens collect module here to put a condition on your video collects. Choose to allow anyone or only followers and set a price or leave it free. 
-<img src="https://i.imgur.com/pNztsT1.png" width="500">
-
-5.5) Uploading: budlr is a bit funny. You need to hvae a storage balance with them in order to upload. So the first time you will have zero and will need to depoist (not much, and its mumbai not real Matic). PRess the black depoist button, enter the amount you want, click the second deposit button and then wait for it to refresh. We show you an estimate of how much it'll cost to upload the video so you know how much to top up.
-
-<img src="https://i.imgur.com/lSzU6g7.png" width="500">
-
-
-6) Click on your profile image on the top right of the web app or on any users profile will bring you here, to their (or your) profile page where you will see all of your videos. Click one to like, comment and see more detail.
-<img src="https://i.imgur.com/Bhghw0p.png" width="500">
-
-
-7) Commenting: Click on a video or the comment button to get to this page where you can leave a comment. Toggle to encrypt it (using LIT protocol) so only the creator can see it. 
-<img src="https://i.imgur.com/34u2BnN.png" width="500">
-<img src="https://i.imgur.com/qYt9lBt.png" width="500">
-
-
-8) Search: sort of self explanatory, start typing the name or handle of a user into the search bar, and some profiles will come up, click through to see their profile
-<img src="https://i.imgur.com/HkPt1Ym.png" width="500">
-
-
-9) Live Streaming: Watch livestreams (if there are any happening at that moment) or share your own. nb: currently Livepeer require you to have OBS installed to stream. You also must be logged into with Lens.
-Toggle to 'Watch Live' or 'Go Live' 
-<img src="https://i.imgur.com/hnLxbdq.png" width="500">
-<img src="https://i.imgur.com/jzgebIz.png" width="500">
-
-
-**Mobile**
-
-10) Landing: Mobile landing page also has two timelines to scroll, click the house icon to toggle between them. You can like, collect, follow etc from the timeline.
-NB: videos do not autoplay on iphone.
-<img src="https://i.imgur.com/4vNkStq.jpeg" height="400">
-
-11) Comments: click the comment button below the video to go through to see more video details and to see and leave a comment.
-<img src="https://i.imgur.com/lasNpyM.jpeg" height="400">
-
-12) Discover page: The bottom scroll bar has timeline, upload, disover and profile links. This is the discover page. See other users, search categories or profiles. 
-<img src="https://i.imgur.com/q6xXk2z.jpeg" height="400">
 
 ## Setup
 
