@@ -109,10 +109,10 @@ interface Props {
                         </div>
                         </div>
                         <div className='flex-1 text-center gap-10 p-5 border-4 mb-5 mt-5 border-2 rounded-full border-black bg-blue-100 w-full'>
-                        <span className={`text-md  bg-blue-200  rounded-full items-center  py-3 px-3  font-semibold cursor-pointer ${videos} mt-2`} onClick={() => setShowUserVideos(true)}>
+                        <span className={`text-md  bg-[#57B8FF]  rounded-full items-center  py-3 px-3  font-semibold cursor-pointer ${videos} mt-2`} onClick={() => setShowUserVideos(true)}>
                         Videos
                         </span>
-                        <span className={`text-md bg-blue-200  rounded-full  py-3 px-3 font-semibold cursor-pointer ${liked} mt-2`} onClick={() => setShowUserVideos(false)}>
+                        <span className={`text-md bg-[#57B8FF]  rounded-full  py-3 px-3 font-semibold cursor-pointer ${liked} mt-2`} onClick={() => setShowUserVideos(false)}>
                         Collected
                         </span>
                         </div>

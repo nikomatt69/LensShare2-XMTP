@@ -5,8 +5,8 @@ import Link from "next/link";
 import type { FC } from "react";
 import type { Publication } from "@/types/lens";
 
-import { Player } from '@livepeer/react';
-import { parseArweaveTxId, parseCid } from 'livepeer/media';
+import  Player  from '@livepeer/react';
+
  
 import LikeButton from  "@/components/Buttons/Likes/LikeButton";
 import MirrorButton from  "@/components/Buttons/Mirrors/MirrorButton";
@@ -24,7 +24,6 @@ const Video: FC<Props> = ({ publication }) => {
   const [playing, setPlaying] = useState(false);
   const [showButtons, setShowButtons] = useState(true);
   const [url, setUrl] = useState<string>('');
-  const idParsed = useMemo(() => parseCid(url) ?? parseArweaveTxId(url), [url]);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const isMirror = publication.__typename === 'Mirror'

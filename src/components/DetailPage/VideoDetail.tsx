@@ -47,18 +47,13 @@ const VideoDetail: FC<Props> = ({
   const router = useRouter();
   const { id } = router.query;
 
-  // const { data, loading, error } = useQuery(PublicationDocument, {
-  //   variables: {
-  //     request: {
-  //       publicationId: id
-  //     }
-  //    },
-  // });
-  // const profile = data?.publication?.profile
-  // console.log("Profile", profile);
-
-  // const publication = data?.publication
-  // console.log("Publication", publication)
+   const { data, loading, error } = useQuery(PublicationDocument, {
+     variables: {
+       request: {
+         publicationId: id
+       }
+      },
+   });
 
   //CHANGE LINK ON DEPLOYMENT TO NEW DOMAIN!
   const Links = `https://lensshare.xyz/detail/${publication?.id}`;
@@ -92,7 +87,7 @@ const VideoDetail: FC<Props> = ({
           onClick={onVideoClick}
           loop
           src={getMedia(publication)}
-          // poster={video.coverURL}
+          //poster={video.coverURL}
           controls
           playsInline
         ></video>

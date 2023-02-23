@@ -63,11 +63,7 @@ const Navbar: FC = () => {
       </Link>
 
         
-      <Link href={`/notifications`}>
-        <button>
-         <BellIcon className="h-6 w-6 text-black" />
-        </button>                  
-      </Link> 
+       
 
         
 

@@ -52,7 +52,7 @@ export const WRONG_NETWORK = IS_MAINNET
 export const SIGN_ERROR = 'Failed to sign data'
 
 
-export const RELAY_ON = "true";
+export const RELAY_ON = "false";
 export const ERROR_MESSAGE = "Something went wrong!";
 
 export const WMATIC_TOKEN_ADDRESS = IS_MAINNET
@@ -75,7 +75,7 @@ export const OPENSEA_MARKETPLACE_URL = IS_MAINNET
   : "https://testnets.opensea.io";
 
 export const IMAGE_CDN_URL = IS_MAINNET
-  ? "https://ik.imagekit.io/lenstubemain , https://ik.imagekit.io/gzmagoxn0r"
+  ? "https://ik.imagekit.io/lenstubemain"
   : "";
 
 export const UPDATE_OWNABLE_FEE_COLLECT_MODULE_ADDRESS = IS_MAINNET
